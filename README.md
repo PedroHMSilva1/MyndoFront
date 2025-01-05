@@ -1,4 +1,6 @@
-# Boardhub
+# Myndo
+
+Projeto Feito em dupla com : https://github.com/Farrush
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
