@@ -1,0 +1,19 @@
+<div class="page-perfil">
+    <app-cabecalho></app-cabecalho>
+    <div class="container">
+        <h2> Nome <h1 class="email">{{usuario?.nome}}</h1>
+        </h2>
+        <h2> Email <h1 class="email">{{usuario?.email}}</h1>
+        </h2>
+        <h2> Data de Cadastro
+            <h1 class="email">{{ usuario?.dataCadastro | date: 'dd-MM-yyyy HH:mm:ss': 'America/Sao_Paulo' }}</h1>
+        </h2>
+        <h2> Senha 
+        <section class="input-box">
+            <button *ngIf="!alterandoSenha" (click)="alterandoSenha = true" mat-flat-button>Alterar Senha</button>
+            <input *ngIf="alterandoSenha" (focusout)="alterandoSenha = false" [(ngModel)]="pass" id="pass" class="input-field" name="pass" ngModel autocomplete="off">
+            <input *ngIf="alterandoSenha" (focusin)="alterandoSenha = true" (click)="onSubmit()" type="submit" class="input-submit" value="Alterar">
+        </section>
+    </h2>
+    </div>
+</div>

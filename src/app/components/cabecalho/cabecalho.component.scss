@@ -1,0 +1,32 @@
+.cabecalho{
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    background-color: var(--cinza-escuro);
+    .botoes{
+        display: flex;
+        height: 100%;
+        align-items: center;
+        gap: 4px;
+        .botao{
+            font-family: 'roboto', sans-serif;
+            font-weight: 500;
+            font-size: 3vh;
+            background-color: var(--azul);
+            color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px #0002;
+            height: 100%;
+
+            &-perfil{
+                background-color: var(--azul);
+                color: #FFF;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,125 @@
+.background-block{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'roboto', sans-serif;
+    .card-tarefa{
+        z-index: 11;
+        position: fixed;
+        background-color: #fff;
+        width: 70vw;
+        height: 90vh;
+        border-radius: 16px;
+        box-shadow: 0px 2px 8px #0002;
+        padding: 32px;
+        gap: 20px;
+        border: 2px solid #CECECE;
+        .linha{
+            margin: 24px 0;
+            display: flex;
+        }
+        h2{
+            font-size: 24px;
+            line-height: 100%;
+
+        }
+        button{
+
+            font-size: 18px;
+
+        }
+        .btn{
+            margin: 0 10px;
+            &.editar{
+                background-color: #ffc926;
+
+            }
+            &.excluir{
+                background-color: #e92a2a;
+            }
+        }
+        .btn-fechar{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #fb2121;
+            color: #fff;
+            padding:2px;
+            border-radius: 50%;
+            height: auto;
+            width: auto;
+            cursor: pointer;
+            &:hover{
+                scale: 1.02;
+                transition: .2s;
+            }
+        }
+        .datas{
+            font-size: 12px;
+            position: absolute;
+            top: 10px;
+            left: 40px;
+        }
+        .box-comentarios{
+            margin-top: 20px;
+            width: 100%;
+            max-height: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            .comentar{
+                display: flex;
+                gap: 16px;
+                input{
+                    flex-grow: 1;
+                    font-size: 18px;
+                    padding: 4px;
+                }
+            }
+            .comentarios{
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+                flex-grow: 1;
+                background-color: #f9f9f9dd;
+                overflow-y: auto;
+                .comentario{
+                    width: 100%;
+                    border: 1px solid #0004;
+                    border-radius: 2px;
+                    position: relative;
+                    padding: 8px 4px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                    .nome-usuario{
+                        position: absolute;
+                        top: 4px;
+                        left: 4px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: #444;
+                        .data{
+                            color: #111;
+                            font-weight: 700;
+                            font-size: 12px;
+                        }
+                    }
+                    .conteudo{
+                        margin-top: 16px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,28 @@
+<div class="wrapper">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <main class="login-box">
+            <header class="login-header">
+                <img src="assets/img/logo.svg" alt="logo">
+            </header>
+            <section class="input-box">
+                <input type="email" id="email" class="input-field" name="email" [(ngModel)]="email" required>
+                <label for="email" class="label">Email</label>
+                <i class="bx bx-user icon"></i>
+            </section>
+            <section class="input-box">
+                <input type="{{ isPasswordVisible ? 'text' : 'password' }}" [(ngModel)]="pass" id="pass" class="input-field" name="pass" autocomplete="off">
+                <label for="pass" class="label">Senha</label>
+                <i class="bx icon" [ngClass]="isPasswordVisible?'bx-show':'bx-hide'" id="show-password" (click)="togglePasswordVisibility()"></i>
+            </section>
+            <section class="input-box">
+                <input type="submit" class="input-submit" value="Login" (click)="onSubmit()">
+            </section>
+            <section class="register">
+                <span>Ainda não se registrou?
+                    <a routerLink="/cadastro">Register</a>
+                </span>
+            </section>
+        </main>
+    </div>

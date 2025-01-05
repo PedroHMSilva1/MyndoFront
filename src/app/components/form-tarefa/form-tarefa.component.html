@@ -1,0 +1,30 @@
+<div class="background-block">
+    <div class="form-tarefa">
+        <h1>Nova Tarefa</h1>
+        <section class="prioridade input-box">
+            <label>Prioridade: </label>
+            <p [ngStyle]="{background: tarefa.tagPrioridade.cor}" *ngIf="tarefa.tagPrioridade != null">{{tarefa.tagPrioridade.prioridade}}</p>
+            <button (click)="prioritiesVisible = true" mat-flat-button>
+                Selecionar
+            </button>  
+            <button (click)="tarefa.tagPrioridade = null" mat-flat-button>
+                Remover
+            </button>                      
+            
+        </section>
+        <section class="input-box">
+            <input type="text" placeholder="Objetivo" class="input-field" [(ngModel)]="tarefa.objetivo">
+        </section>
+        <section class="input-box">
+            <label>Prazo: </label><input type="date" class="input-field" (ngModelChange)="tarefa.prazo = $event" [ngModel]="dataFormatada">
+        </section>
+        <section class="input-box btn-criar">
+            <button *ngIf="!editando" mat-flat-button (click)="cadastrarTarefa()">Criar</button>
+            <button *ngIf="editando" mat-flat-button (click)="alterarTarefa()">Alterar</button>
+        </section>
+        <mat-icon class="btn-fechar" (click)="fechar(tarefaSnapshot)">
+            close
+        </mat-icon>
+    </div>
+    <app-prioridade (removido)="removerPrioridade($event)" [idProjeto]="idProjeto" (fechar)="prioritiesVisible = false" (prioridade)="setPrioridade($event)" *ngIf="prioritiesVisible"></app-prioridade>
+</div>

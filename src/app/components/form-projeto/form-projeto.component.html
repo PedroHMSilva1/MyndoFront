@@ -1,0 +1,12 @@
+<div class="background-block">
+    <div class="form-projeto">
+        <h3>Novo Projeto</h3>
+        <input *ngIf="proj === null" placeholder="Título do Projeto" type="text" maxlength="40" [(ngModel)]="titulo"/>
+        <input *ngIf="proj !== null" placeholder="Título do Projeto" type="text" maxlength="40" [(ngModel)]="proj.titulo"/>
+        <div class="btns">
+            <button *ngIf="proj === null" mat-flat-button (click)="criar()">Criar</button>
+            <button *ngIf="proj !== null" mat-flat-button (click)="alterar()">Alterar</button>
+            <button  mat-flat-button (click)="close.emit()">Cancelar</button>
+        </div>
+    </div>
+</div>

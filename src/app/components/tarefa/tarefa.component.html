@@ -1,0 +1,48 @@
+<div class="background-block">
+    <div class="card-tarefa" [ngStyle]="{borderColor: tarefa?.tagPrioridade?.cor}">
+        <div class="linha">
+            <h2>Prioridade: {{tarefa?.tagPrioridade?.prioridade != undefined? tarefa?.tagPrioridade?.prioridade : "Não Definida"}}</h2>
+
+        </div>
+        <div class="linha">
+            <h2>{{tarefa?.objetivo}}</h2>
+
+        </div>
+        <div class="linha">
+            <h2>Prazo: <span >{{tarefa?.prazo != null? trataData(tarefa?.prazo!) : 'Indefinido'}}</span></h2>
+
+        </div>
+        <button mat-flat-button class="btn excluir" (click)="excluir()">
+            <mat-icon>
+                delete
+            </mat-icon>
+            Excluir
+        </button>
+        <button mat-flat-button class="btn editar" (click)="habilitarEdit()">
+            <mat-icon>
+                edit
+            </mat-icon>
+            Editar
+        </button>
+
+        <section class="box-comentarios">
+            <div class="comentar">
+                <input type="text" placeholder="Comentário" [(ngModel)]="comentario.conteudo"/>
+                <button [disabled]="comentario.conteudo == ''" mat-flat-button (click)="inserirComentario()">Comentar</button>
+            </div>
+            <div class="comentarios">
+                <div class="comentario" *ngFor="let com of comentarios; track: com">
+                    <p class="nome-usuario">{{com.criador?.nome}} <span class="data">{{exibirData(com.comentadoEm)}}</span></p>
+                    <p class="conteudo">{{com.conteudo}}</p>
+                </div>
+            </div>
+        </section>
+
+
+        <mat-icon (click)="this.close.emit()" class="btn-fechar">
+            close
+        </mat-icon>
+        <p class="datas">Criado em: {{trataData(tarefa?.dataCriacao!)}} Última alteração: {{trataData(tarefa?.dataAlteracao!)}}</p>
+        <app-form-tarefa *ngIf="editando" (close)="fecharEdit($event)" [editando]="true" (editarTarefa)="getTarefaEditada($event)" [tarefa]="tarefa!"></app-form-tarefa>
+    </div>
+</div>

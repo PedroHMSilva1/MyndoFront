@@ -1,0 +1,38 @@
+<div class="page-lista-projetos">
+    <app-cabecalho (novoProjeto)="abrirNovoProjeto()"></app-cabecalho>
+    <main>
+        <h1>Meus Projetos</h1>
+        <div class="projetos">
+            <div class="projeto" *ngFor="let projeto of projetos; track: projeto">
+                <div (click)="verProjeto(projeto.id || 0)" class="proj">
+                <h3>{{projeto.titulo}}</h3>         
+                </div>
+                <div class="btn-menu">
+                    <button class="btn-mat-menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"><mat-icon>more_vert</mat-icon></button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="apagarProjeto(projeto)" mat-menu-item>
+                            <mat-icon>delete</mat-icon>
+                            <span>Excluir</span>
+                        </button>
+                        <button (click)="abrirAlteracao(projeto)" mat-menu-item>
+                            <mat-icon >edit</mat-icon>
+                            <span>Editar</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+        <h1>Membro</h1>
+        <div class="projetos">
+            <div class="projeto" *ngFor="let projetoP of projetosP; track: projetoP">
+                <div (click)="verProjeto(projetoP.id || 0)" class="proj">
+                <h3>{{projetoP.titulo}}</h3>
+                
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    <app-form-projeto (criarProjeto)="addProjetoALista($event)" (close)="showFormNewProject = false" *ngIf="showFormNewProject"></app-form-projeto>
+    <app-form-projeto (alterarProjeto)="alterarProjeto($event)" (close)="projAlterando = null" [proj]="projAlterando" [oldTitle]="projAlterando.titulo" *ngIf="projAlterando !== null"></app-form-projeto>
+</div>

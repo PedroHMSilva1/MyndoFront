@@ -1,0 +1,32 @@
+
+
+<section class="wrapper">
+        <main class="login-box">
+            <header class="login-header">
+                <img src="assets/img/logo.svg" alt="logo">
+            </header>
+                <section class="input-box">
+                    <input type="text" id="email" class="input-field" autocomplete="off">
+                    <label for="email" class="label">Email</label>
+                    <i class="bx bx-envelope icon"></i>
+                </section>
+
+                <section class="input-box">
+                    <input type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field"
+                        name="pass" ngModel autocomplete="off">
+                    <label for="pass" class="label">Nova Senha</label>
+                    <i class="bx bx-lock-alt icon" id="show-password" (click)="togglePasswordVisibility()"></i>
+                </section>
+
+                <section class="input-box">
+                    <input type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field"
+                        name="pass" ngModel autocomplete="off">
+                    <label for="confirm-pass" class="label">Confirmar Nova Senha</label>
+                    <i class="bx bx-lock-alt icon" id="show-password" (click)="togglePasswordVisibility()"></i>
+                </section>
+
+                <section class="input-box-button">
+                    <input type="submit" class="input-submit" value="Enviar o Código">
+                </section>
+            </main>
+</section>

@@ -1,0 +1,68 @@
+<div class="projeto-main">
+    <app-cabecalho></app-cabecalho>
+    <main>
+        <div class="main-top-bar">
+            <h1 class="titulo-projeto">
+                {{projeto.titulo}}
+            </h1>
+            <div class="botoes">
+                <button mat-fab class="botao" (click)="convidando = true">Convite</button>
+            </div>
+        </div>
+        <div class="board" cdkDropListGroup>
+ 
+                <div  
+                    *ngFor="let lista of listas; track: lista"
+                    class="lista"
+                    [id]="lista.id+'' || '0'"
+                    cdkDropList
+                    [cdkDropListData]="tarefas.get(lista.id? lista.id:0)"
+                    (cdkDropListDropped)="trocarListaDaTarefa($event)"
+                    >
+                    <div class="container-titulo">
+                        <h1 class="titulo">{{lista.titulo}}
+                        </h1>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"><mat-icon>more_vert</mat-icon></button>
+                        <mat-menu #menu="matMenu">
+                            <button (click)="apagarLista(lista)" mat-menu-item>
+                              <mat-icon>delete</mat-icon>
+                              <span>Excluir</span>
+                            </button>
+                            <button mat-menu-item disabled>
+                              <mat-icon>edit</mat-icon>
+                              <span>Editar</span>
+                            </button>
+                          </mat-menu>
+                    </div>
+                        <div *ngFor="let tarefa of tarefas.get(lista.id? lista.id:0); track tarefa" 
+                        class="tarefa" 
+                        cdkDrag 
+                        [cdkDragData]="tarefa" (click)="abrirTarefa(tarefa)">
+                        <div class="fundo">
+                            <div [ngStyle]="{background: tarefa.tagPrioridade?.cor}" class="barra-prioridade">
+                            </div>
+                            <p class="objetivo">{{tarefa.objetivo}}</p>
+                            <button *ngIf="tarefa.prazo != null" mat-fab extended class="btn-prazo">{{trataData(tarefa.prazo)}}</button>
+                        </div>
+                    </div>
+                    <div class="nova-tarefa">
+                        <button (click)="abrirFormNovaTarefa(lista.id? lista.id : 0)" mat-fab extended>
+                            <mat-icon>task</mat-icon>
+                            Nova Tarefa
+                        </button>
+                    </div>
+                    
+                </div>
+                <div class="nova-lista">
+                    <h1>Criar Nova Lista</h1>
+                    <input [(ngModel)]="novaLista.titulo" type="text" placeholder="Título">
+                    <button (click)="adicionarNovaLista()" mat-fab>Criar</button>
+                </div>
+            
+            
+        </div>
+    </main>
+    <app-inviter [idProjeto]="idProjeto" *ngIf="convidando" (fechar)="convidando = false"></app-inviter>
+    <app-tarefa [idProjeto]="idProjeto" (tarefaEditada)="carregarTarefaAlterada($event)" [tarefa]="tarefaSelec" *ngIf="tarefaSelec !== null" (closeAndEmitId)="apagarTarefa($event)" (close)="tarefaSelec = null"></app-tarefa>
+    <app-form-tarefa [idProjeto]="idProjeto"  (criarTarefa)="fecharFormTarefa($event)" (close)="idLista = 0" *ngIf="idLista > 0" [idLista]="idLista"></app-form-tarefa>
+</div>

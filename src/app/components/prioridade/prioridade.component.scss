@@ -1,0 +1,119 @@
+
+.background-super-block{
+    z-index: 29;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0001;
+    .prioridade-container{
+        font-family: 'roboto', sans-serif;
+        background-color: rgba(255, 255, 255, 0.974);
+        border: 1px solid #0003;
+        border-radius: 16px;
+        padding: 24px;
+        position: absolute;
+        right: 300px;
+        top: 200px;
+        color: #000;
+        height: 50vh;
+        width: 35vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 30;
+        animation-name: open-prioridade;
+        animation-duration: .250s;
+        animation-iteration-count: 1;
+    
+        .form-prioridade{
+            padding: 8px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+  
+
+            input{
+                &.nome{
+                    padding: 4px 8px;
+                }
+                &.cor-input{
+                    background-color: #fff;
+                    border-radius: 4px;
+                }
+            }
+            button{
+                background-color: var(--azul);
+                font-size: 14px;
+                padding: 4px;
+                height: 30px;
+            }
+        }
+        .prioridades{
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            height: 26vh;
+            overflow-y: auto;
+            padding: 4px;
+            width: 100%;
+            .prioridade{
+                position: relative;
+                width: 100%;
+                cursor: pointer;
+                .btn-delete{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: red;
+                }
+                .inner-prioridade{
+                    border-radius: 8px;
+                    border: 1px solid #0003;
+                    padding: 4px;
+                    text-align: left;
+                    background-color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
+                &:hover{
+                    scale: 1.01;
+                }
+                .cor{
+                    width: 90%;
+                    height: 8px;
+                    border-radius: 4px;
+                    margin: 4px auto;
+                }
+                h4{
+                    font-size: 14px;
+                    line-height: 100%;
+                    font-weight: 500;
+                    padding-left: 16px;
+                }
+            }
+        }
+        .btn-fechar{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #fb2121;
+            color: #fff;
+            padding:2px;
+            border-radius: 50%;
+            height: auto;
+            width: auto;
+            cursor: pointer;
+            &:hover{
+                scale: 1.02;
+                transition: .2s;
+            }
+        }
+    }
+    @keyframes open-prioridade {
+        0%{opacity: 0;};
+        100%{opacity: 1;};
+    }
+}

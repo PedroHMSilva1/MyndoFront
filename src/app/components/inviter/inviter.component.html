@@ -1,0 +1,30 @@
+<div class="background-block">
+    <div class="container">
+        <div class="top">
+            <h1>Convidar Colaborador</h1>
+            <div class="input">
+                <input [(ngModel)]="email" placeholder="Email do colaborador"/>
+                <button (click)="buscarUsuario()" mat-flat-button>Procurar</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="usuario" *ngFor="let usuario of usuarios; track usuario" (click)="selecionar(usuario)">
+                <p>
+                    {{usuario.email}}
+                </p>
+            </div>
+            <div class="usuario" *ngIf="usuarios.length < 1">
+                <p >
+                    Digite um email existente para buscar um colaborador
+                </p>
+            </div>
+
+        </div>
+
+
+
+        <mat-icon class="btn-fechar" (click)="this.fechar.emit()">
+            close
+        </mat-icon>
+    </div>
+</div>

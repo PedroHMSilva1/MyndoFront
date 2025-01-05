@@ -1,0 +1,24 @@
+<div class="cabecalho">
+    <div class="botoes">
+        <button mat-fab class="botao">
+            <mat-icon>apps</mat-icon>
+        </button>
+        <button (click)="irParaListaProjetos()" mat-fab extended class="botao">
+            <mat-icon>home</mat-icon>
+            Projetos
+        </button>
+    </div>
+    <div class="botoes">
+        <button (click)="emitNovoProjeto()" *ngIf="currentUrl == '/projetos'" mat-fab extended class="botao">
+            Novo Projeto
+            <mat-icon>add</mat-icon>
+        </button>
+        <button (click)="logoff()" mat-fab extended class="botao">
+            Sair
+            <mat-icon>logout</mat-icon>
+        </button>
+        <button (click)="irPerfil()" mat-mini-fab class="botao-perfil">
+            <mat-icon>person</mat-icon>
+        </button>
+    </div>
+</div>

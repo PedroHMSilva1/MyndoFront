@@ -1,0 +1,33 @@
+<section class="wrapper">
+        <main class="login-box">
+            <header class="login-header">
+                <img src="assets/img/logo.svg" alt="logo">
+            </header>
+            <section class="input-box">
+                <input [(ngModel)]="user" type="text" id="user" class="input-field" required>
+                <label for="user" class="label">Nome Completo
+                </label>
+                <i class="bx bx-user icon"></i>
+            </section>
+            <section class="input-box">
+                <input [(ngModel)]="email" type="text" id="email" class="input-field" autocomplete="off">
+                <label for="email" class="label">Email</label>
+                <i class="bx bx-envelope icon"></i>
+            </section>
+            
+            <section class="input-box">
+                <input [(ngModel)]="pass" type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field" name="pass" ngModel autocomplete="off">
+                <label for="pass" class="label">Password</label>
+                <i class="bx icon" [ngClass]="isPasswordVisible? 'bx-show':'bx-hide'" id="show-password" (click)="togglePasswordVisibility()"></i>
+
+            </section>
+            <section class="input-box">
+                <input [(ngModel)]="confirmPass" type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field" name="pass" ngModel autocomplete="off">
+                <label for="confirm-pass" class="label">Confirm Password</label>
+                <i class="bx icon" [ngClass]="isConfirmPasswordVisible? 'bx-show':'bx-hide'" id="show-password" (click)="togglePasswordVisibility()"></i>
+            </section>
+            <section class="input-box-button">
+                <input (click)="onSubmit()" type="submit" class="input-submit" value="Cadastrar">
+            </section>
+        </main>
+    </section>
